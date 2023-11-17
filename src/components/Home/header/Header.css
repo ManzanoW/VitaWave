@@ -1,0 +1,245 @@
+button {
+  width: 300px;
+  height: 60px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 1.5em;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #4b9c1f;
+  transition: 0.5s;
+}
+
+.App-header {
+  background-color: #262f35;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: white;
+}
+
+.App-header div {
+  width: 30%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+}
+
+.App-header img {
+  width: 90%;
+  height: auto;
+}
+
+.App-header h1 {
+  color: var(--color-primary);
+  font-size: 4em;
+  margin: 0;
+  margin-bottom: 50px;
+  padding: 0;
+}
+
+.App-header h2 {
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.header-login {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.header-login button {
+  width: 170px;
+  height: 60px;
+  font-size: 1.5em;
+  margin-top: 20px;
+
+}
+
+.header-login p {
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0;
+}
+
+.header-login a {
+  text-decoration: none;
+  color: var(--color-primary);
+  font-weight: bold;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+
+.header-login a:hover {
+  text-decoration: underline;
+  color: var(--color-primary-dark);
+  transition: 0.5s;
+}
+
+.header-login a:active {
+  color: var(--color-primary-dark);
+}
+
+.header-login img {
+  width: 30%;
+  height: 40%;
+  margin-top: 200px;
+  transform: translateX(150px);
+  position: absolute;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.header-login img.visible {
+  opacity: 1;
+}
+
+/* Modal */
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-secondary-dark);
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 25vh;
+  left: 65vh;
+  border-radius: 10px;
+  box-shadow: black 0px 0px 10px;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.modal-open {
+  opacity: 0.97;
+  transform: scale(1);
+}
+
+.close {
+  position: absolute;
+  left: 10px;
+  font-size: 2em;
+  color: var(--color-primary);
+  cursor: pointer;
+}
+
+.close:hover {
+  color: red;
+  transition: 0.5s;
+}
+
+.modal h1 {
+  font-size: 4em;
+  color: var(--color-primary);
+  top: 0;
+}
+
+.modal form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.modal form input {
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  font-size: 1.2em;
+}
+
+.modal form input:focus {
+  outline: none;
+  box-shadow: var(--color-primary) 0px 0px 10px;
+  transition: 0.4s;
+}
+
+.modal form input:hover {
+  box-shadow: var(--color-primary) 0px 0px 10px;
+  transition: 0.4s;
+}
+
+.modal form button {
+  width: 300px;
+  height: 60px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 1.5em;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.modal form button:hover {
+  background-color: #4b9c1f;
+  transition: 0.5s;
+}
+
+.modal form label {
+  font-size: 1.2em;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .App-header div {
+    width: 40%;
+  }
+
+  .header-login img {
+    width: 100%;
+    height: 30%;
+    margin-top: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .App-header {
+    height: 90vh;
+  }
+
+  .App-header div {
+    width: 80%;
+    font-size: 0.8em;
+  }
+
+  .header-login {
+    display: none !important;
+  }
+
+  .header-login img {
+    display: none;
+  }
+}
+
+@media (max-width: 370px) {
+  .App-header div {
+    width: 80%;
+    font-size: 0.8em;
+  }
+
+  .App-header button {
+    width: 280px;
+    height: 50px;
+    font-size: 1.2em;
+    margin-top: 20px;
+  }
+}

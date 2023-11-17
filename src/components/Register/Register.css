@@ -1,0 +1,145 @@
+.register {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #262f35;
+  color: white;
+}
+
+.register h1 {
+  font-size: 4em;
+  color: var(--color-primary);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: white 0px 0px 5px;
+  padding: 10px 100px 50px 100px;
+  border-radius: 10px;
+}
+
+.register-form input {
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+}
+
+.register-form input:focus {
+  outline: none;
+  box-shadow: var(--color-primary) 0px 0px 10px;
+  transition: 0.4s;
+}
+
+.register-form input:hover {
+  box-shadow: var(--color-primary) 0px 0px 10px;
+  transition: 0.4s;
+}
+
+.toggle-password {
+  position: relative;
+  top: -43px;
+  left: 130px;
+  margin-top: -25px;
+  width: 30px;
+  height: 30px;
+}
+
+.toggle-password:hover {
+  cursor: pointer;
+}
+
+.register-form label {
+  font-weight: bolder;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.register-form label::before {
+  content: "* ";
+  color: red;
+}
+
+.register-form label:hover {
+  color: var(--color-primary-light);
+}
+
+.register-form select {
+  width: 300px;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  font-size: 1.2em;
+}
+
+.register-form select:focus {
+  outline: none;
+  box-shadow: var(--color-primary) 0px 0px 10px;
+  transition: 0.4s;
+}
+
+.register-form select:hover {
+  box-shadow: var(--color-primary) 0px 0px 10px;
+  transition: 0.4s;
+}
+
+button {
+  width: 300px;
+  height: 60px;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 1.5em;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 1024px) {
+  .register-form div {
+    width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .register-form {
+    flex-direction: column;
+  }
+
+  .register-form div {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 375px) {
+  .register-form div {
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}

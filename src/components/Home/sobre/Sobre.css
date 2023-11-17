@@ -1,0 +1,53 @@
+/* Sobre */
+
+.sobre {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  background-blend-mode: multiply;
+  background-image: url("./img/clinic_image.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+
+.sobre h2 {
+  font-size: 4em;
+  margin: 0;
+  padding: 0;
+  color: var(--color-primary);
+}
+
+.sobre p {
+  font-size: 1.5em;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.sobre p:hover {
+  background-color: #1a2023;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+@media (max-width: 1024px) {
+  .sobre p {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .sobre p {
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .sobre p {
+    width: 100%;
+  }
+}

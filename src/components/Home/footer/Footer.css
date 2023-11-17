@@ -1,0 +1,98 @@
+/* Footer */
+
+.footer {
+  width: 100%;
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-image: url("./img/bg_green_splashes.jpg");
+  background-size: 100% 200%;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+.footer-container {
+  margin: 0 300px;
+  height: 40vh;
+  width: 20%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  box-shadow: white 0px 0px 3px;
+  padding: 0px 20px;
+  border-radius: 10px;
+}
+
+.footer-contacts {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  width: 100%;
+}
+
+.footer-container h1 {
+  color: var(--color-primary);
+  font-size: 3em;
+}
+
+.footer-contacts line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer-contacts h3 {
+  color: var(--color-primary);
+  font-size: 1.8em;
+  text-align: left;
+  margin-right: 20px;
+}
+
+.footer-contacts p {
+  font-size: 1.2em;
+  text-align: left;
+}
+
+.footer-contacts p:hover {
+  color: var(--color-primary);
+  transition: 0.5s;
+}
+
+.footer-container a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1em;
+  margin-left: 30px;
+}
+
+.footer-container a:hover {
+  color: var(--color-primary);
+  transition: 0.5s;
+}
+
+@media (max-width: 1024px) {
+  .footer-container {
+    margin: 0 100px;
+    height: 50vh;
+    width: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    margin: 0 auto;
+    height: 50vh;
+    width: 70%;
+  }
+}
+
+@media (max-width: 375px) {
+  .footer-container {
+    margin: 0 auto;
+    height: 60vh;
+    width: 88%;
+  }
+}

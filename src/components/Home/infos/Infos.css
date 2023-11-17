@@ -1,0 +1,65 @@
+.infos {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1em;
+  background-color: rgba(0, 0, 0, 0.7);
+  background-blend-mode: multiply;
+  background-image: url("./img/medic_crossing_arms.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: white;
+}
+
+.infos h1 {
+  width: 40%;
+  font-size: 4em;
+  color: var(--color-primary);
+  margin: 0 auto;
+}
+
+.infos p {
+  font-size: 1.5em;
+  width: 40%;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.infos p:hover {
+  background-color: #1a2023;
+  border-radius: 10px;
+  transition: 0.5s;
+}
+
+@media (max-width: 1024px) {
+  .infos h1 {
+    width: 60%;
+  }
+
+  .infos p {
+    width: 60%;
+  }
+}
+
+@media (max-width: 768px) {
+  .infos h1 {
+    width: 100%;
+  }
+
+  .infos p {
+    width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .infos h1 {
+    width: 100%;
+    font-size: 2em;
+  }
+
+  .infos p {
+    width: 100%;
+  }
+}
