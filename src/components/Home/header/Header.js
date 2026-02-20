@@ -43,8 +43,14 @@ export function Header() {
     } else if (!emailRegex.test(email)) {
       alert("Email inválido");
       return;
-    } else {
+    } else if (
+      email === JSON.parse(localStorage.getItem("usuarios"))[0]?.email &&
+      password === JSON.parse(localStorage.getItem("usuarios"))[0]?.password
+    ) {
+      alert("Login bem-sucedido!");
       window.location.pathname = "/dashboard";
+    } else {
+      alert("Email ou senha incorretos");
     }
   }
 

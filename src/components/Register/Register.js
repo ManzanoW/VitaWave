@@ -62,6 +62,11 @@ export function Register() {
     setSuccess(true);
     setUser({ name: "", email: "", password: "", type: "", crm: "", crp: "" });
     setSelectedOption("");
+
+    // Redireciona para o dashboard após 2 segundos
+    setTimeout(() => {
+      window.location.pathname = "/dashboard";
+    }, 2000);
   }
 
   return (
