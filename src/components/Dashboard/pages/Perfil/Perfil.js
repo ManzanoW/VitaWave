@@ -27,11 +27,11 @@ export default function Perfil() {
   const [name, setName] = useState(localStorage.getItem("name"));
   const [crm, setCrm] = useState(localStorage.getItem("crm") || "");
   const [crp, setCrp] = useState(localStorage.getItem("crp") || "");
-  const [tel, setTel] = useState(localStorage.getItem("tel") || "");
   const [email, setEmail] = useState(localStorage.getItem("email") || "");
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [passwordModalIsOpen, setPasswordModalIsOpen] = useState(false);
   const [newPassword, setNewPassword] = useState("");
+  localStorage.setItem("tipo", "user");
 
   //function that removes the readOnly attribute from the input fields and changes the button text to "Salvar"
 
@@ -41,7 +41,6 @@ export default function Perfil() {
       localStorage.setItem("name", name);
       localStorage.setItem("crm", crm);
       localStorage.setItem("crp", crp);
-      localStorage.setItem("tel", tel);
       localStorage.setItem("email", email);
     }
     setIsEditable(!isEditable);
@@ -88,32 +87,26 @@ export default function Perfil() {
             onChange={(e) => setName(e.target.value)}
           />{" "}
         </div>
-        <div className="group">
-          <label htmlFor="tipo">
-            {localStorage.getItem("tipo") === "medico" ? "CRM: " : "CRP:"}
-          </label>
-          <input
-            type="string"
-            id="tipo"
-            value={localStorage.getItem("tipo") === "medico" ? crm : crp}
-            readOnly={!isEditable}
-            onChange={(e) =>
-              localStorage.getItem("tipo") === "medico"
-                ? setCrm(e.target.value)
-                : setCrp(e.target.value)
-            }
-          />
-        </div>
-        <div className="group">
-          <label htmlFor="tel">Telefone: </label>
-          <input
-            type="string"
-            id="tel"
-            value={tel}
-            readOnlyreadOnly={!isEditable}
-            onChange={(e) => setTel(e.target.value)}
-          />
-        </div>
+        {localStorage.getItem("tipo") === "user" ? (
+          ""
+        ) : (
+          <div className="group">
+            <label htmlFor="tipo">
+              {localStorage.getItem("tipo") === "medico" ? "CRM: " : "CRP:"}
+            </label>
+            <input
+              type="string"
+              id="tipo"
+              value={localStorage.getItem("tipo") === "medico" ? crm : crp}
+              readOnly={!isEditable}
+              onChange={(e) =>
+                localStorage.getItem("tipo") === "medico"
+                  ? setCrm(e.target.value)
+                  : setCrp(e.target.value)
+              }
+            />
+          </div>
+        )}
         <div className="group">
           <label htmlFor="email">E-mail: </label>
           <input

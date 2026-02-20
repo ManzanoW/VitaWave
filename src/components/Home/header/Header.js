@@ -28,21 +28,42 @@ export function Header() {
   // funcao que abre o modal de login
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // funcao de login usando informacoes do localStorage
+  // Função de login usando informações do localStorage
   function handleLogin(e) {
     e.preventDefault();
+
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
+    // validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password");
-
-    if (email === storedEmail && password === storedPassword) {
-      window.location.pathname = "/dashboard";
+    if (email === "" || password === "") {
+      alert("Preencha todos os campos");
+      return;
+    } else if (!emailRegex.test(email)) {
+      alert("Email inválido");
+      return;
     } else {
-      alert("Email ou senha incorretos");
+      window.location.pathname = "/dashboard";
     }
   }
+
+  //   fetch(`http://localhost:8080/login?email=${email}&password=${password}`)
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         // Se o status da resposta for OK, significa que o login foi bem-sucedido
+  //         console.log("Login bem-sucedido!");
+
+  //         // Redirecione ou faça outras ações necessárias após o login
+  //         window.location.pathname = "/dashboard";
+  //       } else {
+  //         // Se o status da resposta indicar credenciais inválidas, mostra um alerta
+  //         alert("Email ou senha incorretos");
+  //         throw new Error("Credenciais inválidas");
+  //       }
+  //     })
+  //     .catch((error) => console.error("Error:", error));
+  // }
 
   return (
     <header className="App-header">

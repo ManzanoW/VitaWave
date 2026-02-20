@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Menu from "./pages/Menu/Menu.js";
 import Agendamentos from "./pages/Agendamentos/Agendamentos.js";
 import Profissionais from "./pages/Profissionais/Profissionais";
@@ -49,7 +48,8 @@ export function Dashboard() {
       </header>
       <div className="content">
         {activePage === "Menu" && (
-          <Menu agendamentos={(setActivePage, agendamentos)} />
+          // ✅ CORRIGIDO: passa setActivePage e agendamentos como props separadas
+          <Menu setActivePage={setActivePage} agendamentos={agendamentos} />
         )}
         {activePage === "Agendamentos" && (
           <Agendamentos agendamentos={agendamentos} />
