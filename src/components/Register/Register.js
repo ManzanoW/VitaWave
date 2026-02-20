@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Register.css";
 import eye_closed from "./eye_closed_icon.png";
 import eye_opened from "./eye_looking_icon.png";
