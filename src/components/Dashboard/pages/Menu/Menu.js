@@ -1,7 +1,8 @@
 import "./Menu.css";
 
 export default function Menu({ setActivePage, agendamentos }) {
-  const name = localStorage.getItem("name");
+  const name =
+    JSON.parse(localStorage.getItem("usuarios"))[0]?.name || "Usuário";
   const nameShort = name.split(" ")[0];
 
   return (
@@ -27,7 +28,7 @@ function Agendamentos({ setActivePage, agendamentos }) {
           .sort(
             (a, b) =>
               Math.abs(new Date() - new Date(a.dia)) -
-              Math.abs(new Date() - new Date(b.dia))
+              Math.abs(new Date() - new Date(b.dia)),
           )
           .slice(0, 3)
           .map((agendamento) => (

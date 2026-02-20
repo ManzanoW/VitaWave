@@ -5,50 +5,63 @@ import eye_opened from "./eye_looking_icon.png";
 
 export function Register() {
   const passwordRef = useRef();
-  const togglePasswordRef = useRef();
-
-  // Funcao que da alterna a visibilidade da senha
-  useEffect(() => {
-    const togglePassword = togglePasswordRef.current;
-    const password = passwordRef.current;
-
-    if (togglePassword && password) {
-      const handleClick = function (e) {
-        const type =
-          password.getAttribute("type") === "password" ? "text" : "password";
-        password.setAttribute("type", type);
-        this.setAttribute("src", type === "password" ? eye_opened : eye_closed);
-      };
-
-      togglePassword.addEventListener("click", handleClick);
-
-      // Funcao que remove o event listener quando o componente é desmontado
-      return () => {
-        togglePassword.removeEventListener("click", handleClick);
-      };
-    }
-  }, []);
-
+  const [showPassword, setShowPassword] = useState(false);
   const [selectedOption, setSelectedOption] = useState("");
   const [error, setError] = useState("");
-  console.log(selectedOption);
+  const [success, setSuccess] = useState(false);
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    type: "",
+    crm: "",
+    crp: "",
+  });
 
+  // Toggle senha corrigido (state + onClick simples)
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  // Função que simula cadastro (localStorage)
   function handleSubmit(e) {
     e.preventDefault();
-    const inputs = document.querySelectorAll("input");
-    const values = [...inputs].map((input) => input.value);
+    setError("");
 
+    // Validações
     if (selectedOption === "") {
       setError("Por favor, selecione um tipo de conta");
-    } else if (values.includes("")) {
-      setError("Por favor, preencha todos os campos");
-    } else {
-      inputs.forEach((input) => {
-        localStorage.setItem(input.id, input.value);
-      });
-
-      window.location.href = "/";
+      return;
     }
+    if (!user.name || !user.email || !user.password) {
+      setError("Por favor, preencha todos os campos obrigatórios");
+      return;
+    }
+    if (selectedOption === "medico" && !user.crm) {
+      setError("Por favor, informe o CRM");
+      return;
+    }
+    if (selectedOption === "psicologo" && !user.crp) {
+      setError("Por favor, informe o CRP");
+      return;
+    }
+
+    // Email básico
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(user.email)) {
+      setError("Email inválido");
+      return;
+    }
+
+    // Simula "salvar" no localStorage
+    const usuarios = JSON.parse(localStorage.getItem("usuarios") || "[]");
+    usuarios.push({ ...user, id: Date.now() });
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+    console.log("Usuário cadastrado:", user);
+    setSuccess(true);
+    setUser({ name: "", email: "", password: "", type: "", crm: "", crp: "" });
+    setSelectedOption("");
   }
 
   return (
@@ -58,57 +71,94 @@ export function Register() {
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Nome</label>
-            <input type="text" id="name" required />
+            <input
+              type="text"
+              id="name"
+              value={user.name}
+              onChange={(e) => setUser({ ...user, name: e.target.value })}
+              required
+            />
           </div>
+
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" id="email" required />
+            <input
+              type="email"
+              id="email"
+              value={user.email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              required
+            />
           </div>
-          <div className="form-group">
-            <label htmlFor="tel">Telefone</label>
-            <input type="tel" id="tel" required />
-          </div>
+
           <div className="form-group">
             <label htmlFor="password">Senha</label>
-            <input ref={passwordRef} type="password" id="password" required />
-            <span toggle="password">
-              <img
-                ref={togglePasswordRef}
-                src={eye_opened}
-                alt="eye toggle password view"
-                className="toggle-password"
-              />
-            </span>
+            <input
+              ref={passwordRef}
+              type={showPassword ? "text" : "password"}
+              id="password"
+              value={user.password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              required
+            />
+            <img
+              onClick={togglePassword}
+              src={showPassword ? eye_opened : eye_closed}
+              alt="Toggle senha"
+              className="toggle-password"
+              style={{ cursor: "pointer" }}
+            />
           </div>
+
           <div className="form-group">
             <label htmlFor="type">Tipo de Conta</label>
             <select
               id="type"
               value={selectedOption}
-              onChange={(e) => setSelectedOption(e.target.value)}
+              onChange={(e) => {
+                setUser({ ...user, type: e.target.value });
+                setSelectedOption(e.target.value);
+              }}
             >
               <option value="">Selecione</option>
               <option value="user">Usuário</option>
               <option value="medico">Médico</option>
               <option value="psicologo">Psicólogo</option>
             </select>
-            {selectedOption === "medico" && (
-              <div className="form-group">
-                <label htmlFor="crm">CRM</label>
-                <input type="text" id="crm" required />
-              </div>
-            )}
-            {selectedOption === "psicologo" && (
-              <div className="form-group">
-                <label htmlFor="crp">CRP</label>
-                <input type="text" id="crp" required />
-              </div>
-            )}
-            {error && <p className="error">{error}</p>}
           </div>
-          <button type="submit" onClick={handleSubmit}>
-            Cadastre-se
-          </button>
+
+          {selectedOption === "medico" && (
+            <div className="form-group">
+              <label htmlFor="crm">CRM</label>
+              <input
+                type="text"
+                id="crm"
+                value={user.crm}
+                onChange={(e) => setUser({ ...user, crm: e.target.value })}
+                required
+              />
+            </div>
+          )}
+
+          {selectedOption === "psicologo" && (
+            <div className="form-group">
+              <label htmlFor="crp">CRP</label>
+              <input
+                type="text"
+                id="crp"
+                value={user.crp}
+                onChange={(e) => setUser({ ...user, crp: e.target.value })}
+                required
+              />
+            </div>
+          )}
+
+          {error && <p className="error">{error}</p>}
+          {success && (
+            <p className="success">Cadastro realizado com sucesso!</p>
+          )}
+
+          <button type="submit">Cadastre-se</button>
         </form>
       </div>
     </div>
