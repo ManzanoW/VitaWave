@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bb6e07af.css",
+    "main.js": "/static/js/main.26da2eab.js",
+    "static/media/clinic_image.jpg": "/static/media/clinic_image.070638d57317b69e5f19.jpg",
+    "static/media/medic_crossing_arms.jpg": "/static/media/medic_crossing_arms.c876e11ff982699a50ec.jpg",
+    "static/media/bg_green_splashes.jpg": "/static/media/bg_green_splashes.a4671bba79473c946349.jpg",
+    "static/media/doctor_4.png": "/static/media/doctor_4.761411a56927593f3ec3.png",
+    "static/media/doctor_3.png": "/static/media/doctor_3.94098744bf7a6057611b.png",
+    "static/media/vitawave_logo-full.png": "/static/media/vitawave_logo-full.e96ae31796135b142867.png",
+    "static/media/doctor_1.png": "/static/media/doctor_1.42007ce79a2cbe591f84.png",
+    "static/media/eye_closed_icon.png": "/static/media/eye_closed_icon.4cefae3fcd16c05f2756.png",
+    "static/media/eye_looking_icon.png": "/static/media/eye_looking_icon.16dcae1913da8f91070e.png",
+    "index.html": "/index.html",
+    "main.bb6e07af.css.map": "/static/css/main.bb6e07af.css.map",
+    "main.26da2eab.js.map": "/static/js/main.26da2eab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bb6e07af.css",
+    "static/js/main.26da2eab.js"
+  ]
+}

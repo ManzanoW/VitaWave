@@ -7,14 +7,14 @@ export function Footer() {
       <div className="footer-container">
         <h1>Contate-nos</h1>
         <address className="footer-contacts">
-          <line>
+          <div>
             <h3>Phone</h3>
             <p>(13)1234-5678</p>
-          </line>
-          <line>
+          </div>
+          <div>
             <h3>Email</h3>
             <p>hello@vitawave.com</p>
-          </line>
+          </div>
           <h3>
             Social
             <a

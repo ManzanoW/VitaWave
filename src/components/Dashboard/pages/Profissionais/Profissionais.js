@@ -1,29 +1,22 @@
 import "./Profissionais.css";
+import { useState, useEffect } from "react";
 
 export default function Perfil() {
-  const profissionais = [
-    {
-      id: 1,
-      name: "José da Silva",
-      cargo: "Psicólogo",
-      crp: "06/001011",
-      tel: "(11) 99999-9999",
-    },
-    {
-      id: 2,
-      name: "Maria Antônia",
-      cargo: "Médico",
-      crm: "0123456/SP",
-      tel: "(11) 99567-1234",
-    },
-    {
-      id: 3,
-      name: "João Carlos",
-      cargo: "Psicólogo",
-      crp: "08/006012",
-      tel: "(11) 99245-6789",
-    },
-  ];
+  const [profissionais, setProfissionais] = useState([]);
+
+  useEffect(() => {
+    const fetchProfissionais = async () => {
+      try {
+        const response = await fetch("https://api.example.com/profissionais");
+        const data = await response.json();
+        setProfissionais(data);
+      } catch (error) {
+        // console.error("Error:", error);
+      }
+    };
+
+    fetchProfissionais();
+  }, []);
 
   return (
     <div>
@@ -34,15 +27,15 @@ export default function Perfil() {
             <div className="profissional" key={profissional.id}>
               <section className="profissional-name">
                 <h2>{profissional.name}</h2>
-                <h2 className="cargo">{profissional.cargo}</h2>
+                <h2 className="cargo">{profissional.type}</h2>
               </section>
               <section className="profissional-info">
                 <p>
-                  {profissional.cargo === "Médico"
+                  {profissional.type === "Médico"
                     ? "CRM: " + profissional.crm
                     : "CRP: " + profissional.crp}
                 </p>
-                <p>{profissional.tel}</p>
+                <p>{profissional.email}</p>
               </section>
             </div>
           ))
